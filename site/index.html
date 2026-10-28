@@ -241,4 +241,20 @@
 		}
 	})();
 </script>
+	<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll('button[aria-label*="Смотреть видео"]').forEach(function(btn) {
+    const parentBlock = btn.closest('.cyber-frame') || btn.parentElement;
+    const directLink = parentBlock ? parentBlock.querySelector('a[href*="drive.google.com"], a[target="_blank"]') : null;
+    if (directLink && directLink.href) {
+      btn.style.cursor = "pointer";
+      btn.addEventListener("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(directLink.href, "_blank", "noopener,noreferrer");
+      });
+    }
+  });
+});
+</script>
 </body></html>
